@@ -38,14 +38,14 @@ const BarChart = () => {
             <div className="barlabel">label</div>
           </div>
         </div> */}
-      <div className="barcontainer">
-        {bars.map((bar, index) => (
-          <div key={index} className="bar" style={{ height: bar.height }}>
-            bar
-            <div className="barlabel">{bar.label}</div>
-          </div>
-        ))}
-      </div>
+    <div className="barcontainer">
+      {bars.map((bar, index) => (
+        <div key={index} className="bar" style={{ height: bar.height }}>
+          bar
+          <div className="barlabel">{bar.label}</div>
+        </div>
+      ))}
+    </div>
     </>
   );
 };
