@@ -1,6 +1,6 @@
 import React from "react";
 import "./BarChart.css";
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 
 
 const BarChart = () => {
