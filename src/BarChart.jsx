@@ -1,10 +1,24 @@
 import React from "react";
 import "./BarChart.css";
-import { useEffect } from 'react'
-
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 const BarChart = () => {
-
+  const [fetchCryptoList, setfetchCrypto] = useState([]);
+  const fetchCrypto = () => {
+    axios
+      .get("https://api.coincap.io/v2/assets")
+      .then(function (response) {
+        const data = response.data.results;
+        setfetchCrypto(data);
+        console.log(response);
+      }).catch(error => {
+        console.error(error);
+      });
+  };
+  useEffect(() => {
+    fetchCrypto();
+  }, []);
   useEffect(() => {
     //voor het testen
     const data = [10, 20, 15, 25];
@@ -14,7 +28,7 @@ const BarChart = () => {
     chartContainer.innerHTML = "";
 
     // maak een bar voor elk ding
-    data.forEach((value, index) => {
+    data.forEach((value) => {
       const bar = document.createElement("div");
       bar.className = "bar";
       bar.style.height = `${value * 5}px`;
@@ -33,11 +47,13 @@ const BarChart = () => {
     return color;
   };
 
+
+
   return (
     <>
       <div className="data-container">
-        <div className="data-box">
-          <div id="bar-chart"></div>
+        <div id="bar-chart" className="data-box">
+
         </div>
       </div>
     </>
