@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 const BarChart = () => {
 
   useEffect(() => {
-
+    //voor het testen
     const data = [10, 20, 15, 25];
 
     // Container voor de grafiek
