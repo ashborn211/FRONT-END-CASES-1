@@ -16,10 +16,9 @@ const BarChart = () => {
         console.error(error);
       });
   };
+
   useEffect(() => {
     fetchCrypto();
-  }, []);
-  useEffect(() => {
     //voor het testen
     const data = [10, 20, 15, 25];
 
@@ -32,20 +31,9 @@ const BarChart = () => {
       const bar = document.createElement("div");
       bar.className = "bar";
       bar.style.height = `${value * 5}px`;
-      bar.style.backgroundColor = getRandomColor();
       chartContainer.appendChild(bar);
     });
   }, []);
-
-  //maak random kleur voor de grafiek
-  const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
 
 
 
@@ -60,4 +48,7 @@ const BarChart = () => {
   );
 };
 
+
 export default BarChart;
+
+
