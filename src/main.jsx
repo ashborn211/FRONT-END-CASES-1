@@ -5,12 +5,14 @@ import "./index.css";
 import BarChart from "./BarChart.jsx";
 import "./App.css";
 import CircleChart from "./CircleChart.jsx";
+import Linechart from "./LineChart.jsx";
 
 function Root() {
   return (
     <>
       <CircleChart />
-      <App />
+      <Linechart />
+      <App/>
     </>
   );
 }
