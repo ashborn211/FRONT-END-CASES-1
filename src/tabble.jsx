@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Coins from "./tabble-coins/coins";
+import Coins from "./tabble-coins/coins.jsx";
 
 function Tabble() {
   const [coins, setCoins] = useState([]);
@@ -29,10 +29,9 @@ function Tabble() {
   };
 
   return (
-    <Router>
       <section className="coins">
         <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
-          this table shows all cryptocurrency
+          This table shows all cryptocurrency
         </h1>
         <table>
           <thead>
@@ -49,22 +48,12 @@ function Tabble() {
               <tr key={id}>
                 <td>{rank}</td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: "/tabble-coins/coins.jsx",
-                      state: { id }
-                    }}
-                  >
+                  <Link to={{ pathname: `/coins/${id}`, state: { id } }}>
                     {name}
                   </Link>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: "/tabble-coins/coins.jsx",
-                      state: { id }
-                    }}
-                  >
+                  <Link to={{ pathname: `/coins/${id}`, state: { id } }}>
                     {symbol}
                   </Link>
                 </td>
@@ -75,13 +64,9 @@ function Tabble() {
         </table>
         <div className="buttons">
           <button onClick={() => setLimit(limit + 20)}>Next</button>
-          <button onClick={handleRefresh}>reset</button>
+          <button onClick={handleRefresh}>Reset</button>
         </div>
       </section>
-      <Routes>
-        <Route path="/tabble-coins/coins.jsx" element={<Coins />} />
-      </Routes>
-    </Router>
   );
 }
 
