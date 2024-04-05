@@ -32,7 +32,7 @@ const BarChart = () => {
     bars.forEach(() => {
       const bar = document.createElement("div");
       bar.className = "bar";
-      bar.style.height = `${barHeight/1000}%`; // Set the bar height dynamically
+      bar.style.height = `${barHeight / 1000}%`; // Set the bar height dynamically
       chartContainer.appendChild(bar);
     });
   }, [barHeight]); // Include barHeight in the dependency array to re-run the effect when it changes

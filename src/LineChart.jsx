@@ -8,21 +8,6 @@ function LineChart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.coincap.io/v2/assets?limit=20"
-        );
-        setCryptoList(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     const fetchCryptoData = async () => {
       if (selectedCrypto) {
         try {
@@ -36,7 +21,20 @@ function LineChart() {
       }
     };
 
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.coincap.io/v2/assets?limit=20"
+        );
+        setCryptoList(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
     fetchCryptoData();
+
   }, [selectedCrypto]);
 
   const handleCryptoChange = (e) => {
