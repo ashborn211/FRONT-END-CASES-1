@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 import BarChart from "./BarChart.jsx";
-import "./App.css";
+import "./Tabble.css";
 import CircleChart from "./CircleChart.jsx";
 import Linechart from "./LineChart.jsx";
+import Tabble from "./tabble.jsx";
 
 function Root() {
   return (
     <>
       <CircleChart />
       <Linechart />
-      <App/>
+      <Tabble />
     </>
   );
 }

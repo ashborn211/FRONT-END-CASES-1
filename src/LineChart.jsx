@@ -54,7 +54,7 @@ function LineChart() {
     }
   };
 
-  const handleRefresh = async () => {
+  const handleReset = async () => {
     try {
       const response = await axios.get(
         "https://api.coincap.io/v2/assets?limit=20"
@@ -122,7 +122,7 @@ function LineChart() {
       </div>
       <div>
         <button onClick={handleNextPage}>Next</button>
-        <button onClick={handleRefresh}>Refresh</button>
+        <button onClick={handleReset}>reset</button>
       </div>
     </div>
   );
