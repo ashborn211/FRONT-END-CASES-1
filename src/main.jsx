@@ -7,20 +7,27 @@ import CircleChart from "./CircleChart.jsx";
 import Linechart from "./LineChart.jsx";
 import Tabble from "./tabble.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Coins from "./tabble-coins/coins";
+import Coins from "./tabble-coins/coins.jsx";
+import "./tabble-coins/coins.css";
 
 function Main() {
   return (
     <Router>
-      <CircleChart />
-      <Linechart />
-      <Tabble />
-
       <Routes>
-        <Route path="/" element={<Coins />} />
+        <Route path="/" element={<Home />} />
         <Route path="/coins/:id" element={<Coins />} />
       </Routes>
     </Router>
+  );
+}
+
+function Home() {
+  return (
+    <>
+      <CircleChart />
+      <Linechart />
+      <Tabble />
+    </>
   );
 }
 

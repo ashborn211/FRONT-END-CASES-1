@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Coins from "./tabble-coins/coins.jsx";
+import { Link } from "react-router-dom";
 
 function Tabble() {
   const [coins, setCoins] = useState([]);
@@ -29,44 +28,40 @@ function Tabble() {
   };
 
   return (
-      <section className="coins">
-        <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
-          This table shows all cryptocurrency
-        </h1>
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Symbol</th>
-              <th>Price (USD)</th>
-            </tr>
-          </thead>
+    <section className="coins">
+      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
+        This table shows all cryptocurrency
+      </h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Price (USD)</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            {coins.map(({ id, name, rank, symbol, priceUsd }) => (
-              <tr key={id}>
-                <td>{rank}</td>
-                <td>
-                  <Link to={{ pathname: `/coins/${id}`, state: { id } }}>
-                    {name}
-                  </Link>
-                </td>
-                <td>
-                  <Link to={{ pathname: `/coins/${id}`, state: { id } }}>
-                    {symbol}
-                  </Link>
-                </td>
-                <td>${parseFloat(priceUsd).toFixed(2)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="buttons">
-          <button onClick={() => setLimit(limit + 20)}>Next</button>
-          <button onClick={handleRefresh}>Reset</button>
-        </div>
-      </section>
+        <tbody>
+          {coins.map(({ id, name, rank, symbol, priceUsd }) => (
+            <tr key={id}>
+              <td>{rank}</td>
+              <td>
+                <Link to={`/coins/${id}`}>{name}</Link>
+              </td>
+              <td>
+                <Link to={`/coins/${id}`}>{symbol}</Link>
+              </td>
+              <td>${parseFloat(priceUsd).toFixed(2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="buttons">
+        <button onClick={() => setLimit(limit + 20)}>Next</button>
+        <button onClick={handleRefresh}>Reset</button>
+      </div>
+    </section>
   );
 }
 
