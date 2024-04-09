@@ -31,7 +31,7 @@ function Tabble() {
     );
 
     return (
-        <div>
+        <div className='Search'>
             <h1>Coins</h1>
             <input type="text" value={searchTerm} onChange={handleSearch} />
             <table>
