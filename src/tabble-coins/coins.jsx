@@ -8,20 +8,7 @@ const Coins = () => {
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const { id } = useParams();
 
-  useEffect(() => {
-    const fetchCryptoData = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.coincap.io/v2/assets?limit=20`
-        );
-        setCryptoList(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchCryptoData();
-  }, []);
 
   useEffect(() => {
     const fetchCoinData = async () => {
@@ -36,7 +23,18 @@ const Coins = () => {
         }
       }
     };
+    const fetchCryptoData = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.coincap.io/v2/assets?limit=20`
+        );
+        setCryptoList(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
+    fetchCryptoData();
     fetchCoinData();
   }, [id]);
 
