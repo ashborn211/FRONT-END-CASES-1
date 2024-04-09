@@ -118,7 +118,8 @@ function LineChart() {
       <div style={{ width: "800px", height: "400px" }}>
         {selectedCrypto && <Line data={chartData} options={options} />}
       </div>
-      <div>
+      <div className="buttons">
+        
         <button onClick={handleNextPage}>Next</button>
         <button onClick={handleReset}>reset</button>
       </div>

@@ -9,6 +9,7 @@ import Tabble from "./tabble.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Coins from "./tabble-coins/coins.jsx";
 import "./tabble-coins/coins.css";
+import Search from "./Search.jsx";
 
 function Main() {
   return (
@@ -27,6 +28,7 @@ function Home() {
       <CircleChart />
       <Linechart />
       <Tabble />
+      <Search/>
     </>
   );
 }
