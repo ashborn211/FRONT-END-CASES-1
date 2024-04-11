@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function Favorites({ coins, favoriteCoins }) {
     const filteredCoins = favoriteCoins.filter((coin) =>
@@ -16,7 +17,9 @@ function Favorites({ coins, favoriteCoins }) {
                 <tbody>
                     {filteredCoins.map((coin) => (
                         <tr key={coin.id}>
-                            <td>{coin.name}</td>
+                            <td>
+                                <Link to={`/coins/${coin.id}`}>{coin.name}</Link>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

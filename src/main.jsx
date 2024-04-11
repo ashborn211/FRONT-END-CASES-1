@@ -29,6 +29,7 @@ function Home() {
     <>
       <CircleChart />
       <Linechart />
+      <BarChart />
       <Tabble />
       <Search favoriteCoins={favoriteCoins} setFavoriteCoins={setFavoriteCoins} />
       <Favorites favoriteCoins={favoriteCoins} />

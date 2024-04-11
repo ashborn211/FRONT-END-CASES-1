@@ -1,54 +1,69 @@
-import React from "react";
-import "./BarChart.css";
-import { useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Bar } from "react-chartjs-2";
+import { ArcElement } from "chart.js";
+import Chart from 'chart.js/auto'
 
-const BarChart = () => {
-  const [fetchCryptoList, setfetchCrypto] = useState([]);
-  const [barHeight, setBarHeight] = useState(0); // State variable to store bar height
-  const fetchCrypto = () => {
-    axios
-      .get("https://api.coincap.io/v2/assets")
-      .then(function (response) {
-        const data = response.data.data.priceUsd;
-        setBarHeight(response.data.data[0].priceUsd);
-        setfetchCrypto(data);
-        console.log(response);
-      }).catch(error => {
-        console.error(error);
-      });
-  };
+function BarChart() {
+  const [coins, setCoins] = useState([]);
+  const [limit, setLimit] = useState(10);
+
   useEffect(() => {
-    fetchCrypto();
+    const fetchCoins = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.coincap.io/v2/assets?limit=${limit}`
+        );
+        console.log(response.data.data);
+        setCoins(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-    //voor het testen
-    const bars = [1, 2, 3, 4, 5, 6, 7, 8];
+    fetchCoins();
+  }, [limit]);
 
-    // Container voor de grafiek
-    const chartContainer = document.getElementById("bar-chart");
-    chartContainer.innerHTML = "";
-
-    // maak een bar voor elk ding
-    bars.forEach(() => {
-      const bar = document.createElement("div");
-      bar.className = "bar";
-      bar.style.height = `${barHeight / 1000}%`; // Set the bar height dynamically
-      chartContainer.appendChild(bar);
-    });
-  }, [barHeight]); // Include barHeight in the dependency array to re-run the effect when it changes
+  const chartData = {
+    type: "bar",
+    labels: coins.map((coin) => coin.name),
+    datasets: [
+      {
+        label: "Price (USD)",
+        data: coins.map((coin) => parseFloat(coin.priceUsd)),
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.6)",
+          "rgba(54, 162, 235, 0.6)",
+          "rgba(255, 206, 86, 0.6)",
+          "rgba(75, 192, 192, 0.6)",
+          "rgba(153, 102, 255, 0.6)",
+          "rgba(255, 159, 64, 0.6)",
+          "rgba(255, 99, 132, 0.6)",
+          "rgba(54, 162, 235, 0.6)",
+          "rgba(255, 206, 86, 0.6)",
+          "rgba(75, 192, 192, 0.6)",
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+        ],
+      },
+    ],
+  };
 
   return (
-    <>
-      <div className="data-container">
-        <div id="bar-chart" className="data-box">
-
-        </div>
-      </div>
-    </>
+    <div className="chart-container">
+      <Bar data={chartData} />
+    </div>
   );
-};
-
+}
 
 export default BarChart;
-
-
