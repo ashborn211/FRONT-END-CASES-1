@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import BarChart from "./BarChart.jsx";
@@ -9,7 +9,8 @@ import Tabble from "./tabble.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Coins from "./tabble-coins/coins.jsx";
 import "./tabble-coins/coins.css";
-import Search from "./Search.jsx";
+import Search from "./Search";
+import Favorites from "./Favorites";
 
 function Main() {
   return (
@@ -23,12 +24,15 @@ function Main() {
 }
 
 function Home() {
+  const [coins, setCoins] = useState([]);
+  const [favoriteCoins, setFavoriteCoins] = useState([]);
   return (
     <>
       <CircleChart />
       <Linechart />
       <Tabble />
-      <Search/>
+      <Search favoriteCoins={favoriteCoins} setFavoriteCoins={setFavoriteCoins} />
+      <Favorites favoriteCoins={favoriteCoins} />
     </>
   );
 }
