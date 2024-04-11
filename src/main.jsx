@@ -24,7 +24,6 @@ function Main() {
 }
 
 function Home() {
-  const [coins, setCoins] = useState([]);
   const [favoriteCoins, setFavoriteCoins] = useState([]);
   return (
     <>
