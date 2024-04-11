@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
 import { ArcElement } from "chart.js";
-import Chart from 'chart.js/auto'
+import Chart from "chart.js/auto";
 
 function CircleChart() {
   const [coins, setCoins] = useState([]);

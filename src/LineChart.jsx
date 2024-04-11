@@ -34,7 +34,6 @@ function LineChart() {
 
     fetchData();
     fetchCryptoData();
-
   }, [selectedCrypto]);
 
   const handleCryptoChange = (e) => {
@@ -108,10 +107,16 @@ function LineChart() {
       <h1>Cryptocurrency Price History</h1>
       <div>
         <label htmlFor="crypto-select">Select Cryptocurrency: </label>
-        <select id="crypto-select" value={selectedCrypto} onChange={handleCryptoChange}>
+        <select
+          id="crypto-select"
+          value={selectedCrypto}
+          onChange={handleCryptoChange}
+        >
           <option value="">Select a cryptocurrency</option>
           {cryptoList.map((crypto) => (
-            <option key={crypto.id} value={crypto.id}>{crypto.name}</option>
+            <option key={crypto.id} value={crypto.id}>
+              {crypto.name}
+            </option>
           ))}
         </select>
       </div>
@@ -119,7 +124,6 @@ function LineChart() {
         {selectedCrypto && <Line data={chartData} options={options} />}
       </div>
       <div className="buttons">
-        
         <button onClick={handleNextPage}>Next</button>
         <button onClick={handleReset}>reset</button>
       </div>

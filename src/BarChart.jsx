@@ -2,27 +2,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import { ArcElement } from "chart.js";
-import Chart from 'chart.js/auto'
+import Chart from "chart.js/auto";
 
 function BarChart() {
   const [coins, setCoins] = useState([]);
   const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const fetchCoins = async () => {
+    const fetchCoins = async (page) => {
       try {
+        const offset = (page - 1) * limit;
         const response = await axios.get(
-          `https://api.coincap.io/v2/assets?limit=${limit}`
+          `https://api.coincap.io/v2/assets?limit=${limit}&offset=${offset}`
         );
-        console.log(response.data.data);
         setCoins(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    fetchCoins();
-  }, [limit]);
+    fetchCoins(page);
+  }, [limit, page]);
 
   const chartData = {
     type: "bar",
@@ -59,9 +60,21 @@ function BarChart() {
     ],
   };
 
+  const handleNextClick = () => {
+    setPage(page + 1);
+  };
+
+  const handleResetClick = () => {
+    setPage(1);
+  };
+
   return (
     <div className="chart-container">
       <Bar data={chartData} />
+      <div className="buttons">
+        <button onClick={handleNextClick}>Next</button>
+        <button onClick={handleResetClick}>Reset</button>
+      </div>
     </div>
   );
 }

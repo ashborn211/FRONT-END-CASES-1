@@ -8,8 +8,6 @@ const Coins = () => {
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const { id } = useParams();
 
-
-
   useEffect(() => {
     const fetchCoinData = async () => {
       if (id) {
@@ -41,7 +39,7 @@ const Coins = () => {
   const handleCryptoChange = (e) => {
     const selectedCrypto = e.target.value;
     setSelectedCrypto(selectedCrypto);
-    window.location.href = selectedCrypto ? `/coins/${selectedCrypto}` : '/';
+    window.location.href = selectedCrypto ? `/coins/${selectedCrypto}` : "/";
   };
 
   const handleNextPage = async () => {
@@ -69,7 +67,7 @@ const Coins = () => {
   };
 
   const handleBack = () => {
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   return (
@@ -90,9 +88,17 @@ const Coins = () => {
         </select>
       </div>
       <div className="button-container">
-        <button className="action-button" onClick={handleNextPage}>Next</button>
-        <button className="action-button" onClick={handleReset}>Reset</button>
-        {id && <button className="action-button" onClick={handleBack}>Back</button>}
+        <button className="action-button" onClick={handleNextPage}>
+          Next
+        </button>
+        <button className="action-button" onClick={handleReset}>
+          Reset
+        </button>
+        {id && (
+          <button className="action-button" onClick={handleBack}>
+            Back
+          </button>
+        )}
       </div>
       <h2>Coin Detail</h2>
       {coinData ? (

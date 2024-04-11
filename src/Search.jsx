@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 function Search({ favoriteCoins, setFavoriteCoins }) {
@@ -50,7 +50,10 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
         </thead>
         <tbody>
           {filteredCoins.slice(0, limit).map((coin) => (
-            <tr key={coin.id} className={favoriteCoins.includes(coin)? 'favorite' : ''}>
+            <tr
+              key={coin.id}
+              className={favoriteCoins.includes(coin) ? "favorite" : ""}
+            >
               <td>{coin.name}</td>
               <td>
                 <button onClick={() => handleFavorite(coin)}>Favorite</button>
