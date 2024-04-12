@@ -6,6 +6,7 @@ const Coins = () => {
   const [coinData, setCoinData] = useState(null);
   const [cryptoList, setCryptoList] = useState([]);
   const [selectedCrypto, setSelectedCrypto] = useState("");
+  const [limit, setLimit] = useState(100);
   const { id } = useParams();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Coins = () => {
     const fetchCryptoData = async () => {
       try {
         const response = await axios.get(
-          `https://api.coincap.io/v2/assets?limit=20`
+          `https://api.coincap.io/v2/assets?limit=${limit}`
         );
         setCryptoList(response.data.data);
       } catch (error) {
@@ -35,37 +36,17 @@ const Coins = () => {
 
     fetchCryptoData();
     fetchCoinData();
-  }, [id]);
+  }, [id, limit]);
 
   const handleCryptoChange = (e) => {
     const selectedCrypto = e.target.value;
     setSelectedCrypto(selectedCrypto);
     window.location.href = selectedCrypto ? `/coins/${selectedCrypto}` : "/";
   };
-
-  const handleNextPage = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.coincap.io/v2/assets?offset=20&limit=20"
-      );
-      setCryptoList(response.data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const handleNextPage = () => {
+    setLimit(limit + 100)
   };
 
-  const handleReset = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.coincap.io/v2/assets?limit=20"
-      );
-      setCryptoList(response.data.data);
-      setSelectedCrypto("");
-      setCoinData(null);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   const handleBack = () => {
     window.location.href = "/";
@@ -92,14 +73,9 @@ const Coins = () => {
         <button className="action-button" onClick={handleNextPage}>
           Next
         </button>
-        <button className="action-button" onClick={handleReset}>
-          Reset
+        <button className="action-button" onClick={handleBack}>
+          Home
         </button>
-        {id && (
-          <button className="action-button" onClick={handleBack}>
-            Back
-          </button>
-        )}
       </div>
       <h2>Coin Detail</h2>
       {coinData ? (

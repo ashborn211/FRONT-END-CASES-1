@@ -4,6 +4,8 @@ import { Line } from "react-chartjs-2";
 
 function LineChart() {
   const [cryptoList, setCryptoList] = useState([]);
+  const [limit, setLimit] = useState(100);
+
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const [data, setData] = useState([]);
 
@@ -24,7 +26,7 @@ function LineChart() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.coincap.io/v2/assets"
+          `https://api.coincap.io/v2/assets?limit=${limit}`
         );
         setCryptoList(response.data.data);
         console.log(response.data.data);
@@ -35,7 +37,11 @@ function LineChart() {
 
     fetchData();
     fetchCryptoData();
-  }, [selectedCrypto]);
+  }, [selectedCrypto, limit]);
+
+  const nextpage = () => {
+    setLimit(limit + 100)
+  };
 
   const handleCryptoChange = (e) => {
     setSelectedCrypto(e.target.value);
@@ -99,6 +105,9 @@ function LineChart() {
       </div>
       <div style={{ width: "800px", height: "400px" }}>
         {selectedCrypto && <Line data={chartData} options={options} />}
+      </div>
+      <div className="buttons">
+        <button onClick={nextpage}>load more</button>
       </div>
     </div>
   );
