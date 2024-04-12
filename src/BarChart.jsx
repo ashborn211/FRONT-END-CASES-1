@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
-import { ArcElement } from "chart.js";
-import Chart from "chart.js/auto";
 
 function BarChart() {
   const [coins, setCoins] = useState([]);
@@ -17,6 +15,7 @@ function BarChart() {
           `https://api.coincap.io/v2/assets?limit=${limit}&offset=${offset}`
         );
         setCoins(response.data.data);
+        console.log(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

@@ -28,40 +28,42 @@ function Tabble() {
   };
 
   return (
-    <section className="coins">
-      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
-        This table shows all cryptocurrency
-      </h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Symbol</th>
-            <th>Price (USD)</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {coins.map(({ id, name, rank, symbol, priceUsd }) => (
-            <tr key={id}>
-              <td>{rank}</td>
-              <td>
-                <Link to={`/coins/${id}`}>{name}</Link>
-              </td>
-              <td>
-                <Link to={`/coins/${id}`}>{symbol}</Link>
-              </td>
-              <td>${parseFloat(priceUsd).toFixed(2)}</td>
+    <div className="Tabble-container">
+      <section className="coins">
+        <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
+          This table shows all cryptocurrency
+        </h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Symbol</th>
+              <th>Price (USD)</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="buttons">
-        <button onClick={() => setLimit(limit + 20)}>Next</button>
-        <button onClick={handleRefresh}>Reset</button>
-      </div>
-    </section>
+          </thead>
+
+          <tbody>
+            {coins.map(({ id, name, rank, symbol, priceUsd }) => (
+              <tr key={id}>
+                <td>{rank}</td>
+                <td>
+                  <Link to={`/coins/${id}`}>{name}</Link>
+                </td>
+                <td>
+                  <Link to={`/coins/${id}`}>{symbol}</Link>
+                </td>
+                <td>${parseFloat(priceUsd).toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="buttons">
+          <button onClick={() => setLimit(limit + 20)}>Next</button>
+          <button onClick={handleRefresh}>Reset</button>
+        </div>
+      </section>
+    </div>
   );
 }
 
