@@ -100,9 +100,6 @@ table tbody tr td {
   padding: 1rem;
 }
 
-/* table tbody tr:nth-child(even) {
-  background-color: #e5e5e5;
-} */
 
 .buttons {
   display: flex;
@@ -112,7 +109,6 @@ table tbody tr td {
 }
 
 .buttons button {
-  /* width: 45%; */
   flex: 1;
   background-color: #10b581;
   color: #fff;
