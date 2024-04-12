@@ -22,6 +22,10 @@ function Tabble() {
     fetchCoins();
   }, [limit]);
 
+  const nextpage = () => {
+    setLimit(limit + 20)
+  };
+
   const handleRefresh = () => {
     setLimit(20);
   };
@@ -59,7 +63,7 @@ function Tabble() {
         </table>
       </div>
       <div className="buttons">
-        <button onClick={() => setLimit(limit + 20)}>Next</button>
+        <button onClick={nextpage}>Next</button>
         <button onClick={handleRefresh}>Reset</button>
       </div>
     </section>

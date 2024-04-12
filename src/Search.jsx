@@ -57,9 +57,7 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
             >
               <td>{coin.name}</td>
               <td>
-                <div className="buttons">
                 <button onClick={() => handleFavorite(coin)}>Favorite</button>
-                </div>
               </td>
             </tr>
           ))}
