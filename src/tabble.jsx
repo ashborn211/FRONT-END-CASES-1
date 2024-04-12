@@ -28,11 +28,11 @@ function Tabble() {
   };
 
   return (
-    <div className="Tabble-container">
-      <section className="coins">
-        <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
-          This table shows all cryptocurrency
-        </h1>
+    <section className="coins">
+      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
+        This table shows all cryptocurrency
+      </h1>
+      <div className="table-container">
         <table>
           <thead>
             <tr>
@@ -58,12 +58,12 @@ function Tabble() {
             ))}
           </tbody>
         </table>
-        <div className="buttons">
-          <button onClick={() => setLimit(limit + 20)}>Next</button>
-          <button onClick={handleRefresh}>Reset</button>
-        </div>
-      </section>
-    </div>
+      </div>
+      <div className="buttons">
+        <button onClick={() => setLimit(limit + 20)}>Next</button>
+        <button onClick={handleRefresh}>Reset</button>
+      </div>
+    </section>
   );
 }
 

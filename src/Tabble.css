@@ -1,26 +1,7 @@
-.coins-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 2%;
-  width: 40vw;
-  height: 50vh;
-}
-
-.ScrollContainer {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: row;
-  width: 40vw;
-  height: 100vh;
-  gap: 3px;
-  border-radius: 18px;
-  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);
-  margin: 15px;
+.table-container {
   overflow-y: auto;
+  height: 400px;
 }
-
 .buttons {
   display: flex;
   justify-content: center;
@@ -65,3 +46,4 @@
     transform: rotate(360deg);
   }
 }
+
