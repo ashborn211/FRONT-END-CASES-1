@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
+import { ArcElement } from "chart.js";
+import Chart from "chart.js/auto"; 
 
 function BarChart() {
   const [coins, setCoins] = useState([]);

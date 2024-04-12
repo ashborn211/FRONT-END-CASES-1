@@ -24,7 +24,6 @@ function Tabble() {
 
   const handleRefresh = () => {
     setLimit(20);
-    window.scrollTo(0, 0);
   };
 
   return (
