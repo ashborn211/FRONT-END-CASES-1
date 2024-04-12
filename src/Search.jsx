@@ -73,7 +73,7 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
         </table>
       </div>
       <div className="buttons">
-        <button onClick={nextpage}>load more</button>
+        <button onClick={nextpage}>Next</button>
       </div>
     </div>
   );
