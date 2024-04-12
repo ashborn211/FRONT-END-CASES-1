@@ -23,6 +23,10 @@ function LineChart() {
       }
     };
 
+    fetchCryptoData();
+  }, [selectedCrypto]);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -36,8 +40,7 @@ function LineChart() {
     };
 
     fetchData();
-    fetchCryptoData();
-  }, [selectedCrypto, limit]);
+  }, [limit]);
 
   const nextpage = () => {
     setLimit(limit + 100)
@@ -56,7 +59,7 @@ function LineChart() {
   };
 
   const chartData = {
-    labels: data.map((entry, index) => formatDate(entry.time)),
+    labels: data.map((entry) => formatDate(entry.time)),
     datasets: [
       {
         label: `${selectedCrypto} Price (USD)`,
