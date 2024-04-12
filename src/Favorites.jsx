@@ -7,6 +7,7 @@ function Favorites({ coins, favoriteCoins }) {
   return (
     <div>
       <h2>Favorieten</h2>
+      <div className="table-container">
       <table>
         <thead>
           <tr>
@@ -23,6 +24,7 @@ function Favorites({ coins, favoriteCoins }) {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }
