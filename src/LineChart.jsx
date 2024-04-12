@@ -24,9 +24,10 @@ function LineChart() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.coincap.io/v2/assets?limit=20"
+          "https://api.coincap.io/v2/assets"
         );
         setCryptoList(response.data.data);
+        console.log(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,30 +39,6 @@ function LineChart() {
 
   const handleCryptoChange = (e) => {
     setSelectedCrypto(e.target.value);
-  };
-
-  const handleNextPage = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.coincap.io/v2/assets?offset=20&limit=20"
-      );
-      setCryptoList(response.data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  const handleReset = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.coincap.io/v2/assets?limit=20"
-      );
-      setCryptoList(response.data.data);
-      setSelectedCrypto("");
-      setData([]);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
   };
 
   const formatDate = (timestamp) => {
@@ -122,10 +99,6 @@ function LineChart() {
       </div>
       <div style={{ width: "800px", height: "400px" }}>
         {selectedCrypto && <Line data={chartData} options={options} />}
-      </div>
-      <div className="buttons">
-        <button onClick={handleNextPage}>Next</button>
-        <button onClick={handleReset}>reset</button>
       </div>
     </div>
   );
