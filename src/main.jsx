@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import BarChart from "./BarChart.jsx";
 import CircleChart from "./CircleChart.jsx";
 import Linechart from "./LineChart.jsx";
 import Tabble from "./tabble.jsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Coins from "./tabble-coins/coins.jsx";
 import "./tabble-coins/coins.css";
-import Search from "./Search";
-import Favorites from "./Favorites";
+import Search from "./Search.jsx";
+import Favorites from "./Favorites.jsx";
 
 function Main() {
   return (
