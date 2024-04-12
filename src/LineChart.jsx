@@ -103,11 +103,11 @@ function LineChart() {
           ))}
         </select>
       </div>
-      <div style={{ width: "800px", height: "400px" }}>
+      <div className="linechart-container">
         {selectedCrypto && <Line data={chartData} options={options} />}
       </div>
       <div className="buttons">
-        <button onClick={nextpage}>Next</button>
+        <button onClick={nextpage}>Load More</button>
       </div>
     </div>
   );

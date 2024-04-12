@@ -26,7 +26,10 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
   const nextpage = () => {
     setLimit(limit + 100)
   };
-
+  const handleRefresh = () => {
+    setLimit(100);
+  };
+  
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -63,8 +66,8 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
               >
                 <td>{coin.name}</td>
                 <td>
-                <div className="Favorite-buttons">
-                  <button onClick={() => handleFavorite(coin)}>Favorite</button>
+                  <div className="Favorite-buttons">
+                    <button onClick={() => handleFavorite(coin)}>Favorite</button>
                   </div>
                 </td>
               </tr>
@@ -73,7 +76,8 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
         </table>
       </div>
       <div className="buttons">
-        <button onClick={nextpage}>Next</button>
+        <button onClick={nextpage}>Load More</button>
+        <button onClick={handleRefresh}>Reset</button>
       </div>
     </div>
   );
