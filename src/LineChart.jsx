@@ -107,7 +107,7 @@ function LineChart() {
         {selectedCrypto && <Line data={chartData} options={options} />}
       </div>
       <div className="buttons">
-        <button onClick={nextpage}>load more</button>
+        <button onClick={nextpage}>Next</button>
       </div>
     </div>
   );
