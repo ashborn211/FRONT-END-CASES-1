@@ -47,10 +47,10 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
   );
 
   return (
-    <div className="Search">
-      <h1>Coins</h1>
+    <div className="data-container">
+    <h1>Coins</h1>
       <input type="text" value={searchTerm} onChange={handleSearch} />
-      <div className="table-container">
+      <div className="scroll-container">
         <table>
           <thead>
             <tr>

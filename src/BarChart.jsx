@@ -70,7 +70,7 @@ function BarChart() {
   };
 
   return (
-    <div className="chart-container">
+    <div className="data-container">
       <Bar data={chartData} />
       <div className="buttons">
         <button onClick={handleNextClick}>Next</button>

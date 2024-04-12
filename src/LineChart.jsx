@@ -89,8 +89,8 @@ function LineChart() {
   };
 
   return (
-    <div className="LineChart">
-      <h1>Cryptocurrency Price History</h1>
+    <div className="data-container">
+    <h1>Cryptocurrency Price History</h1>
       <div>
         <label htmlFor="crypto-select">Select Cryptocurrency: </label>
         <select

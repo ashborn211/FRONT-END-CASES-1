@@ -23,7 +23,7 @@ function Tabble() {
   }, [limit]);
 
   const nextpage = () => {
-    setLimit(limit + 100)
+    setLimit(limit + 100);
   };
 
   const handleRefresh = () => {
@@ -31,42 +31,44 @@ function Tabble() {
   };
 
   return (
-    <section className="coins">
-      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
-        This table shows all cryptocurrency
-      </h1>
-      <div className="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Symbol</th>
-              <th>Price (USD)</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {coins.map(({ id, name, rank, symbol, priceUsd }) => (
-              <tr key={id}>
-                <td>{rank}</td>
-                <td>
-                  <Link to={`/coins/${id}`}>{name}</Link>
-                </td>
-                <td>
-                  <Link to={`/coins/${id}`}>{symbol}</Link>
-                </td>
-                <td>${parseFloat(priceUsd).toFixed(2)}</td>
+    <div className="data-container">
+      <section className="coins">
+        <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
+          This table shows all cryptocurrency
+        </h1>
+        <div className="scroll-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Price (USD)</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {coins.map(({ id, name, rank, symbol, priceUsd }) => (
+                <tr key={id}>
+                  <td>{rank}</td>
+                  <td>
+                    <Link to={`/coins/${id}`}>{name}</Link>
+                  </td>
+                  <td>
+                    <Link to={`/coins/${id}`}>{symbol}</Link>
+                  </td>
+                  <td>${parseFloat(priceUsd).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="buttons">
+          <button onClick={nextpage}>Load More</button>
+          <button onClick={handleRefresh}>Reset</button>
+        </div>
+      </section>
       </div>
-      <div className="buttons">
-        <button onClick={nextpage}>Load More</button>
-        <button onClick={handleRefresh}>Reset</button>
-      </div>
-    </section>
   );
 }
 

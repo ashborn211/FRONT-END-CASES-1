@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 function CircleChart() {
   const [coins, setCoins] = useState([]);
@@ -65,13 +65,15 @@ function CircleChart() {
 
   return (
     <>
+     <div className="data-container">
       <div className="chart-container">
-        <Doughnut data={chartData} />
+        <Pie data={chartData} />
       </div>
       <div className="buttons">
         <button onClick={handleNextClick}>Next</button>
         <button onClick={handleResetClick}>Reset</button>
       </div>
+    </div>
     </>
   );
 }

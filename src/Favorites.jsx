@@ -5,8 +5,8 @@ function Favorites({ coins, favoriteCoins }) {
   const filteredCoins = favoriteCoins.filter((coin) => coin.name.toLowerCase());
 
   return (
-    <div>
-      <h2>Favorieten</h2>
+    <div className="data-container">
+    <h2>Favorieten</h2>
       <div className="table-container">
       <table>
         <thead>

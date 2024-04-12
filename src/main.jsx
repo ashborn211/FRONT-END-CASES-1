@@ -26,12 +26,31 @@ function Home() {
   const [favoriteCoins, setFavoriteCoins] = useState([]);
   return (
     <>
-      <CircleChart />
-      <Linechart />
-      <BarChart />
-      <Tabble />
-      <Search favoriteCoins={favoriteCoins} setFavoriteCoins={setFavoriteCoins} />
-      <Favorites favoriteCoins={favoriteCoins} />
+      <div class="word-list-container">
+        <div class="word-list-box" id="word-list-box">
+          <CircleChart />
+        </div>
+        <div class="word-list-box" id="word-list-box">
+          <Linechart />
+        </div>
+        <div class="word-list-box" id="word-list-box">
+          <BarChart />
+        </div>
+        </div>
+        <div class="word-list-container">
+        <div class="word-list-box" id="word-list-box">
+          <Tabble />
+        </div>
+        <div class="word-list-box" id="word-list-box">
+          <Search
+            favoriteCoins={favoriteCoins}
+            setFavoriteCoins={setFavoriteCoins}
+          />
+        </div>
+        <div class="word-list-box" id="word-list-box">
+          <Favorites favoriteCoins={favoriteCoins} />
+        </div>
+      </div>
     </>
   );
 }
