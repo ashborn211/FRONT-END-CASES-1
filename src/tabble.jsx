@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Tabble() {
   const [coins, setCoins] = useState([]);
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(100);
 
   useEffect(() => {
     const fetchCoins = async () => {
@@ -23,11 +23,11 @@ function Tabble() {
   }, [limit]);
 
   const nextpage = () => {
-    setLimit(limit + 20)
+    setLimit(limit + 100)
   };
 
   const handleRefresh = () => {
-    setLimit(20);
+    setLimit(100);
   };
 
   return (

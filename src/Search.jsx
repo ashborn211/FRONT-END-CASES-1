@@ -5,12 +5,14 @@ import axios from "axios";
 function Search({ favoriteCoins, setFavoriteCoins }) {
   const [coins, setCoins] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(100);
 
   useEffect(() => {
     const fetchCoins = async () => {
       try {
-        const response = await axios.get(`https://api.coincap.io/v2/assets`);
+        const response = await axios.get(
+          `https://api.coincap.io/v2/assets?limit=${limit}`
+        );
         console.log(response.data.data);
         setCoins(response.data.data);
       } catch (error) {
@@ -19,7 +21,11 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
     };
 
     fetchCoins();
-  }, []);
+  }, [limit]);
+
+  const nextpage = () => {
+    setLimit(limit + 100)
+  };
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -57,12 +63,17 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
               >
                 <td>{coin.name}</td>
                 <td>
+                <div className="Favorite-buttons">
                   <button onClick={() => handleFavorite(coin)}>Favorite</button>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="buttons">
+        <button onClick={nextpage}>load more</button>
       </div>
     </div>
   );

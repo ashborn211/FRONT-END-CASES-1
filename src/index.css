@@ -65,6 +65,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.table-container {
+  overflow-y: auto;
+  height: 400px;
+}
+
 .coins {
   max-width: 900px;
   margin: 5rem auto;
@@ -101,6 +106,25 @@ table tbody tr td {
 }
 
 
+
+.Favorite-buttons button {
+  background-color: #10b581;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.Favorite-buttons button:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+
 .buttons {
   display: flex;
   align-items: center;
@@ -128,8 +152,4 @@ table tbody tr td {
 
 .buttons button:first-child {
   margin-right: 1rem;
-}
-.table-container {
-  overflow-y: auto;
-  height: 400px;
 }
