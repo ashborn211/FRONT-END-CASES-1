@@ -63,7 +63,7 @@ function Tabble() {
         </table>
       </div>
       <div className="buttons">
-        <button onClick={nextpage}>Next</button>
+        <button onClick={nextpage}>Load More</button>
         <button onClick={handleRefresh}>Reset</button>
       </div>
     </section>
