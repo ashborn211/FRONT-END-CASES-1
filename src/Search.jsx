@@ -42,30 +42,27 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
       <h1>Coins</h1>
       <input type="text" value={searchTerm} onChange={handleSearch} />
       <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Favorite</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredCoins.slice(0, limit).map((coin) => (
-            <tr
-              key={coin.id}
-              className={favoriteCoins.includes(coin) ? "favorite" : ""}
-            >
-              <td>{coin.name}</td>
-              <td>
-                <button onClick={() => handleFavorite(coin)}>Favorite</button>
-              </td>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Favorite</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      </div>
-      <div className="buttons">
-        <button onClick={() => setLimit(limit + 10)}>Load More</button>
+          </thead>
+          <tbody>
+            {filteredCoins.slice(0, limit).map((coin) => (
+              <tr
+                key={coin.id}
+                className={favoriteCoins.includes(coin) ? "favorite" : ""}
+              >
+                <td>{coin.name}</td>
+                <td>
+                  <button onClick={() => handleFavorite(coin)}>Favorite</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
