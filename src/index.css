@@ -129,3 +129,7 @@ table tbody tr td {
 .buttons button:first-child {
   margin-right: 1rem;
 }
+.table-container {
+  overflow-y: auto;
+  height: 400px;
+}

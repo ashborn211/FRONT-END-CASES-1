@@ -41,6 +41,7 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
     <div className="Search">
       <h1>Coins</h1>
       <input type="text" value={searchTerm} onChange={handleSearch} />
+      <div className="table-container">
       <table>
         <thead>
           <tr>
@@ -56,12 +57,15 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
             >
               <td>{coin.name}</td>
               <td>
+                <div className="buttons">
                 <button onClick={() => handleFavorite(coin)}>Favorite</button>
+                </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
       <div className="buttons">
         <button onClick={() => setLimit(limit + 10)}>Load More</button>
       </div>
