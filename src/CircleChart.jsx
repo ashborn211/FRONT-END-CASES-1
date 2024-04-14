@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Bar } from "react-chartjs-2";
-import { ArcElement } from "chart.js";
-import Chart from "chart.js/auto";
+import { Pie } from "react-chartjs-2";
 
-function BarChart() {
+function CircleChart() {
   const [coins, setCoins] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
@@ -25,13 +23,17 @@ function BarChart() {
 
     fetchCoins(page);
   }, [limit, page]);
+  const handleNextClick = () => {
+    setPage(page + 1);
+  };
 
+  const handleResetClick = () => {
+    setPage(1);
+  };
   const chartData = {
-    type: "bar",
     labels: coins.map((coin) => coin.name),
     datasets: [
       {
-        label: "Price (USD)",
         data: coins.map((coin) => parseFloat(coin.priceUsd)),
         backgroundColor: [
           "rgba(255, 99, 132, 0.6)",
@@ -61,26 +63,19 @@ function BarChart() {
     ],
   };
 
-  const handleNextClick = () => {
-    setPage(page + 1);
-  };
-
-  const handleResetClick = () => {
-    setPage(1);
-  };
-
   return (
-    <div className="bar-container">
-      <div className="barchart-container">
-        <h1>Cryptocurrency Price</h1>
-        <Bar data={chartData} />
+    <>
+     <div className="data-container">
+      <div className="chart-container">
+        <Pie data={chartData} />
       </div>
-      <div className="buttons2" >
+      <div className="buttons">
         <button onClick={handleNextClick}>Next</button>
         <button onClick={handleResetClick}>Reset</button>
       </div>
     </div>
+    </>
   );
 }
 
-export default BarChart;
+export default CircleChart;
