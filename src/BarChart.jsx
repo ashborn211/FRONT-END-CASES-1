@@ -70,9 +70,12 @@ function BarChart() {
   };
 
   return (
-    <div className="data-container">
-      <Bar data={chartData} />
-      <div className="buttons">
+    <div className="bar-container">
+      <div className="barchart-container">
+        <h1>Cryptocurrency Price</h1>
+        <Bar data={chartData} />
+      </div>
+      <div className="buttons2" >
         <button onClick={handleNextClick}>Next</button>
         <button onClick={handleResetClick}>Reset</button>
       </div>
