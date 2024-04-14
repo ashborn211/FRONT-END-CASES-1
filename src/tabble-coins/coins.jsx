@@ -44,9 +44,8 @@ const Coins = () => {
     window.location.href = selectedCrypto ? `/coins/${selectedCrypto}` : "/";
   };
   const handleNextPage = () => {
-    setLimit(limit + 100)
+    setLimit(limit + 100);
   };
-
 
   const handleBack = () => {
     window.location.href = "/";

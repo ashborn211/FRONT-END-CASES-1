@@ -75,7 +75,7 @@ function BarChart() {
         <h1>Cryptocurrency Price</h1>
         <Bar data={chartData} />
       </div>
-      <div className="buttons2" >
+      <div className="buttons2">
         <button onClick={handleNextClick}>Next</button>
         <button onClick={handleResetClick}>Reset</button>
       </div>

@@ -68,7 +68,7 @@ function Tabble() {
           <button onClick={handleRefresh}>Reset</button>
         </div>
       </section>
-      </div>
+    </div>
   );
 }
 

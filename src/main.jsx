@@ -36,8 +36,8 @@ function Home() {
         <div className="word-list-box" id="word-list-box">
           <BarChart />
         </div>
-        </div>
-        <div className="word-list-container">
+      </div>
+      <div className="word-list-container">
         <div className="word-list-box" id="word-list-box">
           <Tabble />
         </div>

@@ -65,15 +65,15 @@ function CircleChart() {
 
   return (
     <>
-     <div className="data-container">
-      <div className="chart-container">
-        <Pie data={chartData} />
+      <div className="data-container">
+        <div className="chart-container">
+          <Pie data={chartData} />
+        </div>
+        <div className="buttons">
+          <button onClick={handleNextClick}>Next</button>
+          <button onClick={handleResetClick}>Reset</button>
+        </div>
       </div>
-      <div className="buttons">
-        <button onClick={handleNextClick}>Next</button>
-        <button onClick={handleResetClick}>Reset</button>
-      </div>
-    </div>
     </>
   );
 }

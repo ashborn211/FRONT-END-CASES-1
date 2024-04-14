@@ -43,7 +43,7 @@ function LineChart() {
   }, [limit]);
 
   const nextpage = () => {
-    setLimit(limit + 100)
+    setLimit(limit + 100);
   };
 
   const handleCryptoChange = (e) => {
@@ -91,7 +91,7 @@ function LineChart() {
   return (
     <div className="line-container">
       <div>
-      <h1>Cryptocurrency Price History</h1>
+        <h1>Cryptocurrency Price History</h1>
         <label htmlFor="crypto-select">Select Cryptocurrency: </label>
         <select
           id="crypto-select"

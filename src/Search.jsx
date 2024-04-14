@@ -24,12 +24,12 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
   }, [limit]);
 
   const nextpage = () => {
-    setLimit(limit + 100)
+    setLimit(limit + 100);
   };
   const handleRefresh = () => {
     setLimit(100);
   };
-  
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -48,7 +48,7 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
 
   return (
     <div className="data-container">
-    <h1>Coins</h1>
+      <h1>Coins</h1>
       <input type="text" value={searchTerm} onChange={handleSearch} />
       <div className="scroll-container">
         <table>
@@ -67,7 +67,9 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
                 <td>{coin.name}</td>
                 <td>
                   <div className="Favorite-buttons">
-                    <button onClick={() => handleFavorite(coin)}>Favorite</button>
+                    <button onClick={() => handleFavorite(coin)}>
+                      Favorite
+                    </button>
                   </div>
                 </td>
               </tr>

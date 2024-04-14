@@ -6,24 +6,24 @@ function Favorites({ coins, favoriteCoins }) {
 
   return (
     <div className="data-container">
-    <h2>Favorieten</h2>
+      <h2>Favorieten</h2>
       <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredCoins.map((coin) => (
-            <tr key={coin.id}>
-              <td>
-                <Link to={`/coins/${coin.id}`}>{coin.name}</Link>
-              </td>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredCoins.map((coin) => (
+              <tr key={coin.id}>
+                <td>
+                  <Link to={`/coins/${coin.id}`}>{coin.name}</Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

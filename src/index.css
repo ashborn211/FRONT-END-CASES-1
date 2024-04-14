@@ -64,10 +64,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.chart-container{
+.chart-container {
   height: 50vh;
 }
-.linechart-container{
+
+.linechart-container {
   height: 36vh;
 }
 
@@ -92,11 +93,11 @@ body {
   margin: 15px;
 }
 
-.bar-container{
+.bar-container {
   height: 40vh;
 }
 
-.barchart-container{
+.barchart-container {
   height: 30vh;
   width: 30vw;
 }
@@ -193,7 +194,7 @@ table tbody tr td {
   justify-content: space-between;
   margin-top: 2rem;
   width: 25vw;
-  height:40vh;
+  height: 40vh;
 }
 
 .buttons2 button {
