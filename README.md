@@ -21,6 +21,9 @@ in deze dashboard zie je de volgende dingen:
 7. een pagina waar je alle info over de crypto ziet je kan dara ook selecteren welke crypto wilt zien
 
 let op:
+ik heb alles gemaakt op de test1 branch en heb het dan hier in de main branch gezet.
+als je mijn commits wilt zien ga naar de test1 branch
+
 deze dashboard refreshed van zelf niet.
 als je een refresh doet reset je je favorieten
 
