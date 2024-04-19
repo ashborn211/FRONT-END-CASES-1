@@ -23,6 +23,11 @@ const Coins = () => {
         }
       }
     };
+
+
+    fetchCoinData();
+  }, [id]);
+  useEffect(() => {
     const fetchCryptoData = async () => {
       try {
         const response = await axios.get(
@@ -35,8 +40,7 @@ const Coins = () => {
     };
 
     fetchCryptoData();
-    fetchCoinData();
-  }, [id, limit]);
+  }, [limit]);
 
   const handleCryptoChange = (e) => {
     const selectedCrypto = e.target.value;
