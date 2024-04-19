@@ -6,7 +6,7 @@ function Favorites({favoriteCoins }) {
 
   return (
     <div className="data-container">
-      <h2>This tbale shows you all youre Favorites</h2>
+      <h1>This table shows you all youre Favorites</h1>
       <div className="table-container">
         <table>
           <thead>
