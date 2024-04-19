@@ -70,7 +70,7 @@ const Coins = () => {
       </div>
       <div className="button-container">
         <button className="action-button" onClick={handleNextPage}>
-          Next
+          Load More
         </button>
         <button className="action-button" onClick={handleBack}>
           Home
