@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const Coins = () => {
-  const [coinData, setCoinData] = useState(null);
+  const [coinData, setCoinData] = useState();
   const [cryptoList, setCryptoList] = useState([]);
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const [limit, setLimit] = useState(100);
