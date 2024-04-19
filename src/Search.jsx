@@ -35,11 +35,7 @@ function Search({ favoriteCoins, setFavoriteCoins }) {
   };
 
   const handleFavorite = (coin) => {
-    if (favoriteCoins.includes(coin)) {
-      setFavoriteCoins(favoriteCoins.filter((c) => c.id !== coin.id));
-    } else {
-      setFavoriteCoins([...favoriteCoins, coin]);
-    }
+    setFavoriteCoins([...favoriteCoins, coin]);
   };
 
   const filteredCoins = coins.filter((coin) =>
