@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Favorites({ coins, favoriteCoins }) {
+function Favorites({favoriteCoins }) {
   const filteredCoins = favoriteCoins.filter((coin) => coin.name.toLowerCase());
 
   return (
