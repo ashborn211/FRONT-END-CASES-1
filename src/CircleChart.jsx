@@ -4,15 +4,14 @@ import { Pie } from "react-chartjs-2";
 
 function CircleChart() {
   const [coins, setCoins] = useState([]);
-  const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchCoins = async (page) => {
       try {
-        const offset = (page - 1) * limit;
+        const offset = (page - 1) * 10;
         const response = await axios.get(
-          `https://api.coincap.io/v2/assets?limit=${limit}&offset=${offset}`
+          `https://api.coincap.io/v2/assets?limit=10&offset=${offset}`
         );
         setCoins(response.data.data);
         console.log(response.data.data);
@@ -22,7 +21,7 @@ function CircleChart() {
     };
 
     fetchCoins(page);
-  }, [limit, page]);
+  }, [page]);
   const handleNextClick = () => {
     setPage(page + 1);
   };
