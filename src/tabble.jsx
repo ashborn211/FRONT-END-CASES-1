@@ -33,7 +33,7 @@ function Tabble() {
   return (
     <div className="data-container">
       <section className="coins">
-        <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
+        <h1>
           This table shows all cryptocurrency
         </h1>
         <div className="scroll-container">
