@@ -1,27 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Pie } from "react-chartjs-2";
+import useFetchCoins from "./fetch";
 
 function CircleChart() {
-  const [coins, setCoins] = useState([]);
   const [page, setPage] = useState(1);
+  const coins = useFetchCoins(page);
 
-  useEffect(() => {
-    const fetchCoins = async (page) => {
-      try {
-        const offset = (page - 1) * 10;
-        const response = await axios.get(
-          `https://api.coincap.io/v2/assets?limit=10&offset=${offset}`
-        );
-        setCoins(response.data.data);
-        console.log(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchCoins(page);
-  }, [page]);
   const handleNextClick = () => {
     setPage(page + 1);
   };
@@ -29,6 +13,7 @@ function CircleChart() {
   const handleResetClick = () => {
     setPage(1);
   };
+
   const chartData = {
     labels: coins.map((coin) => coin.name),
     datasets: [
