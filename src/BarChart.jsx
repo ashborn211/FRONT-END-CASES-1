@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Bar } from "react-chartjs-2";
-import useFetchCoins from "./fetch";
+import { useFetchCoins } from "./fetch";
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 
 function BarChart() {
   const [page, setPage] = useState(1);
-  const coins = useFetchCoins(page);
+  const  coins   = useFetchCoins(page);
+
+  useEffect(() => {
+    Chart.register(ArcElement);
+  }, []);
 
   const chartData = {
     type: "bar",
@@ -51,6 +54,8 @@ function BarChart() {
   const handleResetClick = () => {
     setPage(1);
   };
+
+ 
 
   return (
     <div className="bar-container">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Line } from "react-chartjs-2";
+import { useFetchCryptoData, useFetchCryptoList } from "./fetch";
 
 function LineChart() {
   const [cryptoList, setCryptoList] = useState([]);
@@ -8,39 +8,6 @@ function LineChart() {
 
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchCryptoData = async () => {
-      if (selectedCrypto) {
-        try {
-          const response = await axios.get(
-            `https://api.coincap.io/v2/assets/${selectedCrypto}/history?interval=d1`
-          );
-          setData(response.data.data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      }
-    };
-
-    fetchCryptoData();
-  }, [selectedCrypto]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.coincap.io/v2/assets?limit=${limit}`
-        );
-        setCryptoList(response.data.data);
-        console.log(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [limit]);
 
   const nextpage = () => {
     setLimit(limit + 100);
@@ -51,19 +18,20 @@ function LineChart() {
   };
 
   const formatDate = (timestamp) => {
-    const date = new Date(timestamp);
+    const date = new Date(timestamp * 1000); // convert timestamp to milliseconds
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+
+    return `${day}/${month}/${year}`;
   };
 
   const chartData = {
-    labels: data.map((entry) => formatDate(entry.time)),
+    labels: data?.map((entry) => formatDate(entry.time)),
     datasets: [
       {
-        label: `${selectedCrypto} Price (USD)`,
-        data: data.map((entry) => parseFloat(entry.priceUsd)),
+        label: "Price (USD)",
+        data: data?.map((entry) => parseFloat(entry.priceUsd)),
         fill: false,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.1,
@@ -88,6 +56,18 @@ function LineChart() {
     },
   };
 
+  const { fetchCryptoData } = useFetchCryptoData();
+
+  useEffect(() => {
+    fetchCryptoData(setData, selectedCrypto);
+  }, [selectedCrypto]);
+
+  const { fetchCryptoList } = useFetchCryptoList(limit);
+
+  useEffect(() => {
+    fetchCryptoList(setCryptoList);
+  }, [limit]);
+
   return (
     <div className="line-container">
       <div>
@@ -99,7 +79,7 @@ function LineChart() {
           onChange={handleCryptoChange}
         >
           <option value="">Select a cryptocurrency</option>
-          {cryptoList.map((crypto) => (
+          {cryptoList?.map((crypto) => (
             <option key={crypto.id} value={crypto.id}>
               {crypto.name}
             </option>
