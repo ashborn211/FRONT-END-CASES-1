@@ -1,29 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
+import useFetchCoins from "./fetch";
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 
 function BarChart() {
-  const [coins, setCoins] = useState([]);
   const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    const fetchCoins = async (page) => {
-      try {
-        const offset = (page - 1) * 10;
-        const response = await axios.get(
-          `https://api.coincap.io/v2/assets?limit=10&offset=${offset}`
-        );
-        setCoins(response.data.data);
-        console.log(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchCoins(page);
-  }, [page]);
+  const coins = useFetchCoins(page);
 
   const chartData = {
     type: "bar",
