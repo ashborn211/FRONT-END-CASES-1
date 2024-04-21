@@ -3,11 +3,11 @@ import { Line } from "react-chartjs-2";
 import { useFetchCryptoData, useFetchCryptoList } from "./fetch";
 
 function LineChart() {
-  const [cryptoList, setCryptoList] = useState([]);
   const [limit, setLimit] = useState(100);
+  const cryptoList = useFetchCryptoList(limit);
 
   const [selectedCrypto, setSelectedCrypto] = useState("");
-  const [data, setData] = useState([]);
+  const data = useFetchCryptoData(selectedCrypto);
 
   const nextpage = () => {
     setLimit(limit + 100);
@@ -18,19 +18,18 @@ function LineChart() {
   };
 
   const formatDate = (timestamp) => {
-    const date = new Date(timestamp * 1000); // naar milliseconden
+    const date = new Date(timestamp * 1000); // convert timestamp to milliseconds
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
-
-    return `${day}/${month}/${year}`;
+    return `${month}/${day}/${year}`;
   };
 
   const chartData = {
     labels: data?.map((entry) => formatDate(entry.time)),
     datasets: [
       {
-        label: "Price (USD)",
+        label: `${selectedCrypto} Price (USD)`,
         data: data?.map((entry) => parseFloat(entry.priceUsd)),
         fill: false,
         borderColor: "rgb(75, 192, 192)",
@@ -56,43 +55,31 @@ function LineChart() {
     },
   };
 
-  const { fetchCryptoData } = useFetchCryptoData();
-
-  useEffect(() => {
-    fetchCryptoData(setData, selectedCrypto);
-  }, [selectedCrypto]);
-
-  const { fetchCryptoList } = useFetchCryptoList(limit);
-
-  useEffect(() => {
-    fetchCryptoList(setCryptoList);
-  }, [limit]);
-
   return (
     <div className="line-container">
-      <div>
-        <h1>Cryptocurrency Price History</h1>
-        <label htmlFor="crypto-select">Select Cryptocurrency: </label>
-        <select
-          id="crypto-select"
-          value={selectedCrypto}
-          onChange={handleCryptoChange}
-        >
-          <option value="">Select a cryptocurrency</option>
-          {cryptoList?.map((crypto) => (
-            <option key={crypto.id} value={crypto.id}>
-              {crypto.name}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="linechart-container">
-        {selectedCrypto && <Line data={chartData} options={options} />}
-      </div>
-      <div className="buttons">
-        <button onClick={nextpage}>Load More</button>
-      </div>
+    <div>
+      <h1>Cryptocurrency Price History</h1>
+      <label htmlFor="crypto-select">Select Cryptocurrency: </label>
+      <select
+        id="crypto-select"
+        value={selectedCrypto}
+        onChange={handleCryptoChange}
+      >
+        <option value="">Select a cryptocurrency</option>
+        {cryptoList?.map((crypto) => (
+          <option key={crypto.id} value={crypto.id}>
+            {crypto.name}
+          </option>
+        ))}
+      </select>
     </div>
+    <div className="linechart-container">
+      {selectedCrypto && <Line data={chartData} options={options} />}
+    </div>
+    <div className="buttons">
+      <button onClick={nextpage}>Load More</button>
+    </div>
+  </div>
   );
 }
 

@@ -44,7 +44,7 @@ export const useFetchCryptoData = (selectedCrypto) => {
     fetchCryptoData();
   }, [selectedCrypto]);
 
-  return { fetchCryptoData };
+  return data;
 };
 
 export const useFetchCryptoList = (limit) => {
@@ -65,5 +65,5 @@ export const useFetchCryptoList = (limit) => {
     fetchData();
   }, [limit]);
 
-  return { fetchCryptoList: setCryptoList };
+  return cryptoList;
 };
